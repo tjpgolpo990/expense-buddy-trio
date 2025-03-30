@@ -1,7 +1,9 @@
+
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { User, Expense, Balance } from "@/types";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { Json } from "@/integrations/supabase/types";
 
 type ExpenseContextType = {
   users: User[];
@@ -71,7 +73,10 @@ export const ExpenseProvider: React.FC<{ children: React.ReactNode }> = ({ child
               amount: expense.amount,
               date: new Date(expense.date),
               paidBy: expense.paid_by,
-              splitWith: Array.isArray(expense.split_with) ? expense.split_with : [],
+              // Convert Json[] to string[] by explicitly converting each element to string
+              splitWith: Array.isArray(expense.split_with) 
+                ? expense.split_with.map((id: Json) => String(id)) 
+                : [],
               category: expense.category,
               type: expense.type || 'expense'
             }));
