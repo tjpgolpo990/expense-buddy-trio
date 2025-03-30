@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { User, Expense, Balance } from "@/types";
+import { User, Expense, Balance, ExpenseCategory, ExpenseType } from "@/types";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Json } from "@/integrations/supabase/types";
@@ -77,8 +77,8 @@ export const ExpenseProvider: React.FC<{ children: React.ReactNode }> = ({ child
               splitWith: Array.isArray(expense.split_with) 
                 ? expense.split_with.map((id: Json) => String(id)) 
                 : [],
-              category: expense.category,
-              type: expense.type || 'expense'
+              category: expense.category as ExpenseCategory, // Type assertion here
+              type: (expense.type || 'expense') as ExpenseType // Type assertion here too
             }));
             
             setExpenses(fetchedExpenses);
