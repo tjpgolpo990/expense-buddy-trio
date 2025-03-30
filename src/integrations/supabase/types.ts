@@ -17,6 +17,8 @@ export type Database = {
           description: string | null
           id: string
           paid_by: string
+          split_with: Json | null
+          type: string | null
         }
         Insert: {
           amount: number
@@ -25,6 +27,8 @@ export type Database = {
           description?: string | null
           id: string
           paid_by: string
+          split_with?: Json | null
+          type?: string | null
         }
         Update: {
           amount?: number
@@ -33,6 +37,8 @@ export type Database = {
           description?: string | null
           id?: string
           paid_by?: string
+          split_with?: Json | null
+          type?: string | null
         }
         Relationships: []
       }

@@ -1,6 +1,4 @@
 
-import { useState } from "react";
-import { User } from "@/types";
 import { useExpenseContext } from "@/context/ExpenseContext";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { 
@@ -23,7 +21,7 @@ export default function UserSelector() {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-sm font-medium">Active User:</span>
+      <span className="text-sm font-medium hidden sm:inline">Active User:</span>
       <Select value={activeUser.id} onValueChange={handleUserChange}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Select User" />
