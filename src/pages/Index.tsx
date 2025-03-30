@@ -1,13 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useExpenseContext } from "@/context/ExpenseContext";
+import Layout from "@/components/Layout";
+import DashboardStats from "@/components/DashboardStats";
+import AddExpenseForm from "@/components/AddExpenseForm";
+import ExpenseList from "@/components/ExpenseList";
+import BalanceSummary from "@/components/BalanceSummary";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <Layout>
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+          <h2 className="text-3xl font-bold">Dashboard</h2>
+          <AddExpenseForm />
+        </div>
+        
+        <DashboardStats />
+        
+        <div className="grid lg:grid-cols-2 gap-6">
+          <BalanceSummary />
+          <ExpenseList />
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
